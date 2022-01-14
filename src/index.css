@@ -1,13 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #030303;
+}
+
+#songScroll {
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+}
+
+#songScroll::-webkit-scrollbar {
+  height: 5px; /* width of the entire scrollbar */
+}
+
+#songScroll::-webkit-scrollbar-track {
+  background: #292b2c; /* color of the tracking area */
+}
+
+#songScroll::-webkit-scrollbar-thumb {
+  background-color: grey;
+  border-radius: 20px;
+}
+
+#volumeScroll,
+#seekScroll {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+#seekScroll {
+  width: 50vw;
+  height: 5px;
+  background-color: "#c1b5b5";
+}
+
+#volumeScroll:hover,
+#seekScroll:hover {
+  opacity: 1;
+}
+
+#volumeScroll::-webkit-slider-thumb,
+#seekScroll::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  background: #fff;
+  cursor: pointer;
+}
+
+#seekScroll::-webkit-slider-thumb {
+  width: 10px;
+  height: 10px;
+}
+
+a {
+  text-decoration: none;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+#searchContainer {
+  width: 100%;
+}
+
+@media screen and (min-width: 1024px) {
+  #searchContainer {
+    width: 50%;
+  }
 }
