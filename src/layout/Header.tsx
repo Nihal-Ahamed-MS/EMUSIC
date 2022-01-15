@@ -59,8 +59,11 @@ export const Header = () => {
                 </Link>
               </li>
             </ul>
-            <div className="mt-xs-3 mt-lg-0 contact-nav-btn">
-              <Link className="nav-link text-white ms-lg-5" to="/signin">
+            <div className="mt-3 mt-lg-0 contact-nav-btn">
+              <Link
+                className="nav-item p-0 p-lg-2 text-decoration-none text-white contact-btn"
+                to="/signin"
+              >
                 {Object.keys(user).length === 0 ? (
                   <span className="bg-light text-dark px-4 py-2 fw-bold">
                     LOGIN

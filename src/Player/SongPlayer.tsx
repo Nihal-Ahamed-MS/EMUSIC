@@ -378,11 +378,11 @@ export const SongPlayer = () => {
             <input
               type="range"
               min="0"
-              max="1"
-              step="0.1"
-              value={volume}
-              onChange={volumeHandler}
-              id="volumeScroll"
+              max={totalTime}
+              step="0.0000001"
+              value={seeker}
+              onChange={seekHandler}
+              id="seekScroll"
             />
           </div>
         </div>
@@ -441,9 +441,9 @@ export const SongPlayer = () => {
           transition: ".5s ease-in-out",
           height: "0%",
         }}
-        className="bg-dark position-fixed bottom-0 start-0 text-light w-100  d-lg-none"
+        className=" bg-dark position-fixed bottom-0 start-0 text-light w-100  d-lg-none"
       >
-        <div className="p-2">
+        <div className="container p-2">
           <div className="d-flex flex-column align-items-center justify-content-center">
             <div className="mt-4 text-end w-100">
               <FaAngleDown onClick={changeHeight} className="mt-5 fs-3" />
@@ -485,11 +485,11 @@ export const SongPlayer = () => {
                 />
               )}
             </div>
-            <div className="d-flex align-items-center flex-column">
+            <div className="d-flex  align-items-center flex-column">
               <PlayerControls mobileView={true} />
 
               <div
-                className="d-flex align-items-center"
+                className="d-flex w-100 align-items-center"
                 style={{
                   order: "-1",
                   marginTop: "2rem",
@@ -512,7 +512,7 @@ export const SongPlayer = () => {
                     type="range"
                     min="0"
                     max="100"
-                    step="0.1"
+                    step="0.001"
                     value={seeker}
                     onChange={seekHandler}
                     id="seekScroll"
