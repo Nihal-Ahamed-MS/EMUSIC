@@ -90,4 +90,23 @@ code {
   #searchContainer {
     width: 50%;
   }
+  #libraryFontSize {
+    font-size: 5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #songMobileScroll {
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+  }
+  #libraryFontSize {
+    font-size: 3rem;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  #libraryFontSize {
+    font-size: 2rem;
+  }
 }

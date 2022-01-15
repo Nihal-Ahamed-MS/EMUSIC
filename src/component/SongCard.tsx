@@ -1,29 +1,37 @@
 import { useState } from "react";
-import { playlistProps, songProps } from "../types/song.type";
+import { songProps } from "../types/song.type";
 import { MdPlaylistAdd, MdPlaylistAddCheck } from "react-icons/md";
-import { playlistState } from "../redux/store/songStore";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   addToPlaylist,
   setCurrentSong,
   removeFromPlaylist,
 } from "../redux/actions/song";
+import { userProps } from "../types/user.type";
+import { useNavigate } from "react-router";
 
 export const SongCard = ({ name, artist, url, img, id }: songProps) => {
   const [isSongAddedToQueue, setIsSongAddedToQueue] = useState(true);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  var user: userProps;
+  var localStorageJson = localStorage.getItem("user");
 
-  const currentSongPlaylist: playlistProps = useSelector(
-    (state: playlistState) => state.playlistReducer
-  );
+  if (typeof localStorageJson === "string") {
+    user = JSON.parse(localStorageJson);
+  }
 
   const addToCurrentPlaylist = () => {
-    if (isSongAddedToQueue) {
-      dispatch(addToPlaylist({ name, artist, url, img }));
-      setIsSongAddedToQueue(false);
+    if (user !== undefined) {
+      if (isSongAddedToQueue) {
+        dispatch(addToPlaylist({ name, artist, url, img }));
+        setIsSongAddedToQueue(false);
+      } else {
+        dispatch(removeFromPlaylist(name));
+        setIsSongAddedToQueue(true);
+      }
     } else {
-      dispatch(removeFromPlaylist(name));
-      setIsSongAddedToQueue(true);
+      navigate("/signin");
     }
   };
 
@@ -31,14 +39,15 @@ export const SongCard = ({ name, artist, url, img, id }: songProps) => {
     dispatch(setCurrentSong({ name, artist, url, img, id }));
   };
 
-  console.log(currentSongPlaylist);
-
   return (
-    <div className="me-4">
-      <div onClick={addSongToState}>
+    <div className="me-4 d-flex flex-column">
+      <div
+        style={{ cursor: "pointer", width: "200px" }}
+        onClick={addSongToState}
+      >
         <img
           style={{
-            width: "200px",
+            width: "100%",
             height: "200px",
             backgroundSize: "cover",
             backgroundPosition: "center",
@@ -46,7 +55,7 @@ export const SongCard = ({ name, artist, url, img, id }: songProps) => {
           }}
           src={img}
           alt={""}
-          className="bg-dark rounded me-3"
+          className="bg-dark rounded"
         />
       </div>
       <div className="d-flex justify-content-between align-items-center">
@@ -54,11 +63,13 @@ export const SongCard = ({ name, artist, url, img, id }: songProps) => {
           <div className="mt-2">{name}</div>
           <div className="mt-1">{artist}</div>
         </div>
-        {!isSongAddedToQueue ? (
-          <MdPlaylistAddCheck color="1DB954" onClick={addToCurrentPlaylist} />
-        ) : (
-          <MdPlaylistAdd onClick={addToCurrentPlaylist} />
-        )}
+        <div style={{ cursor: "pointer" }}>
+          {!isSongAddedToQueue ? (
+            <MdPlaylistAddCheck color="1DB954" onClick={addToCurrentPlaylist} />
+          ) : (
+            <MdPlaylistAdd onClick={addToCurrentPlaylist} />
+          )}
+        </div>
       </div>
     </div>
   );

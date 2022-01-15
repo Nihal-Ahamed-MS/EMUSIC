@@ -45,16 +45,16 @@ export const Library = () => {
   return (
     <Base>
       <div className="container w-100 text-light ">
-        <div className="d-flex w-100 justify-content-start align-items-end">
+        <div className="d-sm-flex w-100 justify-content-start align-items-end">
           <img
             className="shadow"
             src="https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png"
             alt="library"
           />
-          <div className="d-flex w-100 justify-content-between align-items-end">
+          <div className="d-md-flex w-100 justify-content-between align-items-end">
             <div className="d-flex  flex-column ms-3">
-              <div className="fs-5 fw-bolder">PLAYLIST</div>
-              <div style={{ fontSize: "5rem" }} className="fw-bold">
+              <div className="fs-5 mt-2 mt-lg-none fw-bolder">PLAYLIST</div>
+              <div id="libraryFontSize" className="fw-bold">
                 Library Songs
               </div>
 
@@ -64,7 +64,7 @@ export const Library = () => {
                     navigator("/signup");
                   }}
                   style={{ cursor: "pointer" }}
-                  className="d-flex justify-content-center align-items-center rounded text-center bg-warning text-light"
+                  className="my-3 my-md-none d-flex justify-content-center align-items-center rounded text-center bg-warning text-light"
                 >
                   <FaInfoCircle className="me-2" />
                   <div>LOGIN IN CONTINUE</div>
@@ -78,7 +78,7 @@ export const Library = () => {
 
             <div
               onClick={songHandler}
-              className="text-dark text-center "
+              className=" ms-3 mt-3 ms-lg-none me-lg-none text-dark text-center "
               style={{
                 cursor: "pointer",
                 borderRadius: "50%",
@@ -87,7 +87,7 @@ export const Library = () => {
                 backgroundColor: "#1DB954",
               }}
             >
-              <FaPlay color={"#fff"} className="fs-5 ps-1 h-100 my-auto" />
+              <FaPlay color={"#fff"} className="fs-5  ps-1 h-100 my-auto" />
             </div>
           </div>
         </div>

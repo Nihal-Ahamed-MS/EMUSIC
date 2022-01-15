@@ -19,9 +19,12 @@ import {
   songProps,
 } from "../types/song.type";
 import { userProps } from "../types/user.type";
+import { useNavigate } from "react-router-dom";
 
 export const SongPlayer = () => {
   const videoRef = useRef<HTMLVideoElement>(null!);
+  const navigate = useNavigate();
+  const [isSeekerActive, setIsSeekerActive] = useState(false);
   const [likedSongSymbolColor, setLikedSongSymbolColor] = useState(false);
   const [miniPlayerHeight, setMiniPlayerHeight] = useState(false);
   const [seeker, setSeeker] = useState(1);
@@ -94,6 +97,9 @@ export const SongPlayer = () => {
   if (videoRef.current != null) {
     videoRef.current.ontimeupdate = () => {
       _setCurrentTime();
+      if (!isSeekerActive) {
+        setSeeker(videoRef.current?.currentTime);
+      }
     };
   }
 
@@ -174,8 +180,12 @@ export const SongPlayer = () => {
 
   //To add a song to library and store it in DB
   const addThisSongToLibrary = () => {
-    addToLikedSongs(currentSong, user.uid, currentSong.id);
-    setLikedSongSymbolColor((prev) => !prev);
+    if (user != null) {
+      addToLikedSongs(currentSong, user.uid, currentSong.id);
+      setLikedSongSymbolColor((prev) => !prev);
+    } else {
+      navigate("/signin");
+    }
   };
 
   //To control the height of the player in mobile and desktop
@@ -209,21 +219,48 @@ export const SongPlayer = () => {
       <div className="d-flex align-items-center flex-column">
         {mobileView ? <div className="mt-3"></div> : ""}
         <div className="d-flex align-items-center">
-          <MdSkipPrevious onClick={prevSong} className="fs-2" />
-          <MdFastRewind onClick={reverse} className="fs-2 mx-3" />
+          <MdSkipPrevious
+            style={{ cursor: "pointer" }}
+            onClick={prevSong}
+            className="fs-2"
+          />
+          <MdFastRewind
+            style={{ cursor: "pointer" }}
+            onClick={reverse}
+            className="fs-2 mx-3"
+          />
           <div
             onClick={songHandler}
             className="bg-light text-dark text-center "
-            style={{ borderRadius: "50%", width: "50px", height: "50px" }}
+            style={{
+              borderRadius: "50%",
+              width: "50px",
+              height: "50px",
+              cursor: "pointer",
+            }}
           >
             {isPlaying ? (
-              <FaPause className="fs-4 h-100 my-auto" />
+              <FaPause
+                style={{ cursor: "pointer" }}
+                className="fs-4 h-100 my-auto"
+              />
             ) : (
-              <FaPlay className="fs-4 ps-1 h-100 my-auto" />
+              <FaPlay
+                style={{ cursor: "pointer" }}
+                className="fs-4 ps-1 h-100 my-auto"
+              />
             )}
           </div>
-          <MdFastForward onClick={fastForward} className="fs-2 mx-3" />
-          <MdSkipNext onClick={nextSong} className="fs-2 " />
+          <MdFastForward
+            style={{ cursor: "pointer" }}
+            onClick={fastForward}
+            className="fs-2 mx-3"
+          />
+          <MdSkipNext
+            style={{ cursor: "pointer" }}
+            onClick={nextSong}
+            className="fs-2 "
+          />
         </div>
       </div>
     );
@@ -303,16 +340,25 @@ export const SongPlayer = () => {
                   ":" +
                   ("0" + Math.floor(currentTime % 60)).slice(-2)}
               </div>
-
-              <input
-                type="range"
-                min="0"
-                max={totalTime}
-                step="0.1"
-                value={seeker}
-                onChange={seekHandler}
-                id="seekScroll"
-              />
+              <div
+                onMouseEnter={() => {
+                  setIsSeekerActive((prev) => !prev);
+                }}
+                onMouseLeave={() => {
+                  setIsSeekerActive((prev) => !prev);
+                }}
+                style={{ cursor: "pointer" }}
+              >
+                <input
+                  type="range"
+                  min="0"
+                  max={totalTime}
+                  step="1"
+                  value={seeker}
+                  onChange={seekHandler}
+                  id="seekScroll"
+                />
+              </div>
 
               <div className="px-3 py-1">
                 {Math.floor(totalTime / 60) +
@@ -454,16 +500,24 @@ export const SongPlayer = () => {
                     ":" +
                     ("0" + Math.floor(currentTime % 60)).slice(-2)}
                 </div>
-
-                <input
-                  type="range"
-                  min="0"
-                  max="100"
-                  step="0.1"
-                  value={seeker}
-                  onChange={seekHandler}
-                  id="seekScroll"
-                />
+                <div
+                  onTouchStart={() => {
+                    setIsSeekerActive((prev) => !prev);
+                  }}
+                  onTouchEnd={() => {
+                    setIsSeekerActive((prev) => !prev);
+                  }}
+                >
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    step="0.1"
+                    value={seeker}
+                    onChange={seekHandler}
+                    id="seekScroll"
+                  />
+                </div>
 
                 <div className="px-3 py-1">
                   {Math.floor(totalTime / 60) +

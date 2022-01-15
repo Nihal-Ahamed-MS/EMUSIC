@@ -1,7 +1,7 @@
 import { FaHeart } from "react-icons/fa";
 import { songProps } from "../types/song.type";
 
-export const SongExpandedCard = ({ name, artist, url, img }: songProps) => {
+export const SongExpandedCard = ({ name, artist, img }: songProps) => {
   return (
     <div className="d-flex justify-content-between mt-2">
       <div className="p-2  w-100 rounded-2">

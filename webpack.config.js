@@ -11,6 +11,11 @@ module.exports = {
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
   },
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
+  },
   devtool: "source-map",
   watch: true,
   module: {
@@ -39,9 +44,9 @@ module.exports = {
     }),
   ],
   devServer: {
-    host: 'localhost',
+    host: "localhost",
     port: 3000,
     historyApiFallback: true,
-    open: true
-  }
+    open: true,
+  },
 };
