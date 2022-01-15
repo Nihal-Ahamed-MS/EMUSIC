@@ -1,9 +1,9 @@
 # E MUSIC
 
-E MUSIC is a music player built with React with Typescript and Firebase.  
+E MUSIC is a music player built with React (Typescript) and Firebase.  
 
 ## Project Overview
-This E MUSIC fetch a list of songs and shows to user. User is able to listen the songs if he/she likes it, they add it to their library if he/she is signed in. E MUSIC has a custom music player component that plays songs. Also user can search songs.
+E MUSIC is a music player built with React and Firebase. This E MUSIC fetches a list of songs and shows it to the user. The user is able to listen to the songs, if he/she likes it they add it to their library if he/she is signed in. E MUSIC has a custom music player component that plays songs. Also, users can search songs.
 
 ## Functionlity
 - Play, Pause, Next, Previous, Fast Forward, Rewind a song.
