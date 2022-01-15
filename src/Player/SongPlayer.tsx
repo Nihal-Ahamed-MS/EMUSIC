@@ -378,11 +378,11 @@ export const SongPlayer = () => {
             <input
               type="range"
               min="0"
-              max={totalTime}
-              step="0.0000001"
-              value={seeker}
-              onChange={seekHandler}
-              id="seekScroll"
+              max="1"
+              step="0.1"
+              value={volume}
+              onChange={volumeHandler}
+              id="volumeScroll"
             />
           </div>
         </div>
@@ -441,7 +441,7 @@ export const SongPlayer = () => {
           transition: ".5s ease-in-out",
           height: "0%",
         }}
-        className=" bg-dark position-fixed bottom-0 start-0 text-light w-100  d-lg-none"
+        className="container bg-dark position-fixed bottom-0 start-0 text-light d-lg-none"
       >
         <div className="container p-2">
           <div className="d-flex flex-column align-items-center justify-content-center">
@@ -511,8 +511,8 @@ export const SongPlayer = () => {
                   <input
                     type="range"
                     min="0"
-                    max="100"
-                    step="0.001"
+                    max={totalTime}
+                    step="1"
                     value={seeker}
                     onChange={seekHandler}
                     id="seekScroll"
