@@ -1,46 +1,42 @@
-# Getting Started with Create React App
+# E MUSIC
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+E MUSIC is a music player built with React (Typescript) and Firebase.  
 
-## Available Scripts
+## Project Overview
+E MUSIC is a music player built with React and Firebase. This E MUSIC fetches a list of songs and shows it to the user. The user is able to listen to the songs, if he/she likes it they add it to their library if he/she is signed in. E MUSIC has a custom music player component that plays songs. Also, users can search songs.
 
-In the project directory, you can run:
+## Functionlity
+- Play, Pause, Next, Previous, Fast Forward, Rewind a song.
+- Add to Liked songs.
+- Play songs in a queue.
+- Search songs.
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<b>Frontned</b>: Reactjs
+<br>
+<b>Styling</b>: CSS and Material UI
+<br>
+<b>Database</b>: Firestore
+<br>
+<b>Authentication and Authorisation</b>: Firebase Auth
+<br>
+<b>State Management</b>: Redux
+<br>
+<b>Bundler</b>: Webpack
+<br>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Application Links
 
-### `npm test`
+Deployed URL -> [https://emusic.netlify.app](https://emusic.netlify.app)
+<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Devloped and Maintained By
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+📸 [Instagram](https://www.instagram.com/lucifer_the_king/?hl=en) <br /> 
+🧳 [LinkdIn](https://www.linkedin.com/in/nihal-ahamed-m-s-7b6808190/)
+<br>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+**MADE WITH 💖, HAPPY CODING!**
