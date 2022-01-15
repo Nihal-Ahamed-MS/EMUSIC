@@ -6,6 +6,7 @@ E MUSIC is a music player built with React (Typescript) and Firebase.
 E MUSIC is a music player built with React and Firebase. This E MUSIC fetches a list of songs and shows it to the user. The user is able to listen to the songs, if he/she likes it they add it to their library if he/she is signed in. E MUSIC has a custom music player component that plays songs. Also, users can search songs.
 > It's a bit hard to find a songs API so I added a list of 10 songs to Firebase storage and store the reference in Firestore for CRUD operations.
 
+
 ## Functionlity
 - Play, Pause, Next, Previous, Fast Forward, Rewind a song.
 - Add to Liked songs.
@@ -36,7 +37,7 @@ Deployed URL -> [https://emusic.netlify.app](https://emusic.netlify.app)
 ## Devloped and Maintained By
 
 📸 [Instagram](https://www.instagram.com/lucifer_the_king/?hl=en) <br /> 
-🧳 [LinkdIn](https://www.linkedin.com/in/nihal-ahamed-m-s-7b6808190/)
+🧳 [LinkedIn](https://www.linkedin.com/in/nihal-ahamed-m-s-7b6808190/)
 <br>
 
 
