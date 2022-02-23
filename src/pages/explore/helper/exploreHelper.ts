@@ -1,6 +1,8 @@
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../../../config/firebaseConfig";
 
+//Firebase needs exact names to give the result.
+//Inorder to get correct result exact song name is used.
 export const searchQuery = async (searchText: String) => {
   const q = query(collection(db, "songs"), where("name", "==", searchText));
 

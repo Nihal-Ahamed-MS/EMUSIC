@@ -22,10 +22,10 @@ export const Library = () => {
 
   if (typeof localStorageJson === "string") {
     user = JSON.parse(localStorageJson);
-    console.log(user);
   }
 
   useEffect(() => {
+    //Fetching user playlist and adding it to likedPlaylist.
     if (user.apiKey !== null) {
       fetchLikedSongs(user.uid).then((playlist: any) => {
         var arr: Array<{}> = [];
@@ -35,9 +35,11 @@ export const Library = () => {
         setLikeSongPlaylist(arr);
       });
     }
-  });
+  }, []);
 
   const songHandler = () => {
+    //Setting the currentsong to playlist first song and adding
+    //playlist to redux state.
     dispatch(setCurrentSong(likeSongPlaylist[0]));
     dispatch(setCurrentPlaylist(likeSongPlaylist));
   };
@@ -67,7 +69,7 @@ export const Library = () => {
                   className="my-3 my-md-none d-flex justify-content-center align-items-center rounded text-center bg-warning text-light"
                 >
                   <FaInfoCircle className="me-2" />
-                  <div>LOGIN IN CONTINUE</div>
+                  <div>LOGIN IN TO CONTINUE</div>
                 </div>
               ) : (
                 <div className="text-muted">

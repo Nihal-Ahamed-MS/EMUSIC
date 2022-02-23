@@ -3,6 +3,8 @@ import { deleteDoc } from "firebase/firestore";
 import { db } from "../../../config/firebaseConfig";
 import { songProps } from "../../../types/song.type";
 
+//Instead firing a request to check whether the song is present in user list.
+//The song are in stored likedSongArr in localStorage and added to DB list if it's not presnet in localStroage.
 export const addToLikedSongs = async (
   likedSong: songProps,
   uid: string,
@@ -22,7 +24,7 @@ export const addToLikedSongs = async (
 
       await deleteDoc(doc(likedSongRef, "song", id));
     } else {
-      console.log("from else");
+      //If likedSongArr doesn't contain the song.
       likedSongArr.push(likedSong.name);
       localStorage.setItem("likedSongArr", JSON.stringify(likedSongArr));
 
@@ -30,7 +32,7 @@ export const addToLikedSongs = async (
       await setDoc(doc(db, "likedSongs", uid), { uid });
     }
   } else {
-    console.log("from else");
+    //If likedSongArr is not present in localStorage
     likedSongArr.push(likedSong.name);
     localStorage.setItem("likedSongArr", JSON.stringify(likedSongArr));
 

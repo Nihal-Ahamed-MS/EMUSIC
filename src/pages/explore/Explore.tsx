@@ -12,15 +12,19 @@ const Explore = () => {
 
   const dispatch = useDispatch();
 
+  //To search a song
   const searchHandler = async (e: React.MouseEvent<SVGAElement>) => {
     e.preventDefault();
     if (searchText !== "") {
       searchQuery(searchText).then((res: any) => {
-        setSearchResult(res);
+        if (Object.keys(res).length > 0) {
+          setSearchResult(res);
+        }
       });
     }
   };
 
+  //Setting search result song to player.
   const setQueryResultToPlayer = () => {
     if (searchText !== null) {
       dispatch(setCurrentSong(searchResult));
