@@ -8,10 +8,12 @@ export const SignIn = (): JSX.Element => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const handleSignIn = (e: any) => {
-    e.preventDefault();
+  const handleSignIn = (testemail?: any, testpass?: any) => {
     auth
-      .signInWithEmailAndPassword(email, password)
+      .signInWithEmailAndPassword(
+        email === "" ? testemail : email,
+        password === "" ? testpass : password
+      )
       .then((res) => {
         localStorage.setItem("user", JSON.stringify(res.user));
         navigate("/");
@@ -69,6 +71,16 @@ export const SignIn = (): JSX.Element => {
                 className="btn btn-secondary w-100 rounded mt-3"
               >
                 Sign In
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  handleSignIn("test@test.com", "123456");
+                }}
+                className="btn btn-secondary w-100 rounded mt-3"
+              >
+                Guest Login
               </button>
             </form>
           </section>
